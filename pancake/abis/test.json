@@ -1,0 +1,17 @@
+{
+  "currentBlock": 24704510,
+  "healedBytecodeBytes": "0x0",
+  "healedBytecodes": "0x0",
+  "healedTrienodeBytes": "0x0",
+  "healedTrienodes": "0x0",
+  "healingBytecode": "0x0",
+  "healingTrienodes": "0x0",
+  "highestBlock": 24704596,
+  "startingBlock": 24688761,
+  "syncedAccountBytes": "0x5aca8ce7e",
+  "syncedAccounts": "0x8590d64",
+  "syncedBytecodeBytes": "0x22b26452b",
+  "syncedBytecodes": "0x10a78d",
+  "syncedStorage": "0x5a0c7e2d",
+  "syncedStorageBytes": "0x4b96442a26"
+}
