@@ -8,7 +8,7 @@ from web3 import Web3
 
 from pancake import *
 from pancake.services.db import _query
-from db_redis_async import redis, redis_rs
+from db import redis, redis_rs
 
 is_test = False
 
