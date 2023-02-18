@@ -20,7 +20,7 @@ async def get_gap_bnb(gap=2000):
     return gap_bnb
 
 
-async def check_liquid(pool, gap_bnb, gap=2000):
+async def check_liquid(pool, gap_bnb, gap=1000):
     if pool['token0_symbol'] == 'WBNB':
         if gap_bnb < pool['reserves'][0] / 10 ** int(pool['token0_decimals']):
             return True
