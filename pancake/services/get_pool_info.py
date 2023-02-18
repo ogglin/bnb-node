@@ -114,7 +114,7 @@ async def start():
         if liq:
             all_pools[key] = json.dumps(item)
     print(len(ready_pools))
-    # await redis.hset('pools_pancake', mapping=ready_pools)
+    await redis.hset('pools_pancake', mapping=ready_pools)
     print('run_pools done!', time.time() - tstart)
 
 
