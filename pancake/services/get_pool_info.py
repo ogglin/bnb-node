@@ -113,8 +113,8 @@ async def start():
         liq = await check_liquid(item[0], gap_bnb)
         if liq:
             all_pools[key] = json.dumps(item)
-    print(len(ready_pools))
-    await redis.hset('pools_pancake', mapping=ready_pools)
+    print(len(all_pools))
+    await redis.hset('pools_pancake', mapping=all_pools)
     print('run_pools done!', time.time() - tstart)
 
 
