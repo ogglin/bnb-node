@@ -2,9 +2,12 @@ from web3 import Web3
 
 from .abis import PancakeV2Factory, PancakeRouterV2, PancakeMainStakingContractV2, ABIPoolPancake, ABIPancakeToken
 
-bsc = 'http://91.215.61.140:28545'
-bsc_wss = 'ws://91.215.61.140:28888'
-w3http = Web3(Web3.HTTPProvider(bsc))
+BSC_NODE_URL = 'http://91.215.61.108:28545'
+BSC_NODE_URL_WSS = 'ws://91.215.61.108:28888'
+# BSC_NODE_URL = f'http://localhost:8545'
+# BSC_NODE_URL_WSS = f'ws://localhost:8888'
+
+w3http = Web3(Web3.HTTPProvider(BSC_NODE_URL))
 # w3wss = Web3(Web3.WebsocketProvider(bsc_wss))
 
 pancake_factory_address = Web3.toChecksumAddress('0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73')

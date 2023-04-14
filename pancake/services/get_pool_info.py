@@ -103,6 +103,7 @@ async def start():
     except Exception as err:
         await set_pools()
         pools = await get_pools()
+    print(len(pools))
     all_pools = {}
     polls_stable = await get_ready_pools(stable_pools)
     gap_bnb = await get_gap_bnb()
@@ -110,9 +111,9 @@ async def start():
     for key, item in polls_stable.items():
         all_pools[key] = json.dumps(item)
     for key, item in ready_pools.items():
-        liq = await check_liquid(item[0], gap_bnb)
-        if liq:
-            all_pools[key] = json.dumps(item)
+        # liq = await check_liquid(item[0], gap_bnb)
+        # if liq:
+        all_pools[key] = json.dumps(item)
     print(len(all_pools))
     await redis.hset('pools_pancake', mapping=all_pools)
     print('run_pools done!', time.time() - tstart)
