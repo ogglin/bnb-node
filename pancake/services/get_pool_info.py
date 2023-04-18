@@ -37,9 +37,10 @@ async def check_liquid(pool, gap_bnb, gap=1000):
 
 
 async def set_pools():
-    pools = await sync_query(f"""select pool_contract, token0_contract, token0_symbol, token0_decimals, 
-            token1_contract, token1_symbol, token1_decimals, tsymbol, strong_active
-            from pancake_pools;""")
+    pools = await sync_query(f"""select pancake_pools.*
+        from pancake_pools left join trusted_tokens_bsc ttb 
+        on (pancake_pools.token0_contract = ttb.contract or pancake_pools.token1_contract = ttb.contract)
+        where ttb.is_active = true or ttb.strong_active = true;""")
     jpools = []
     for pool in pools:
         jpools.append(list(pool))
