@@ -41,11 +41,9 @@ async def set_pools():
                pancake_pools.token0_contract,
                pancake_pools.token0_symbol,
                pancake_pools.token0_decimals,
-               pancake_pools.token0_name,
                pancake_pools.token1_contract,
                pancake_pools.token1_symbol,
                pancake_pools.token1_decimals,
-               pancake_pools.token1_name,
                pancake_pools.tsymbol,
                pancake_pools.strong_active
         from pancake_pools
@@ -65,6 +63,7 @@ async def get_pools():
 
 
 async def get_pool_info(pool):
+    print(pool)
     pool_contract, token0_contract, token0_symbol, token0_decimals, token1_contract, token1_symbol, token1_decimals, tsymbol, strong_active = pool
     address = Web3.toChecksumAddress(pool_contract)
     pool_factory = w3http.eth.contract(address=address, abi=ABIPoolPancake)

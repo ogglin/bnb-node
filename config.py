@@ -1,5 +1,5 @@
-# HOST_URL = 'localhost'
-ETH_HOST_URL = '91.215.61.108'
+ETH_HOST_URL = 'localhost'
+# ETH_HOST_URL = '91.215.61.108'
 
 ETH_NODE_URL = f'http://{ETH_HOST_URL}:28545'
 ETH_NODE_URL_WSS = f'ws://{ETH_HOST_URL}:28888'
