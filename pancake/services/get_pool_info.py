@@ -41,11 +41,9 @@ async def set_pools():
                    pancake_pools.token0_contract,
                    pancake_pools.token0_symbol,
                    pancake_pools.token0_decimals,
-                   pancake_pools.token0_name,
                    pancake_pools.token1_contract,
                    pancake_pools.token1_symbol,
                    pancake_pools.token1_decimals,
-                   pancake_pools.token1_name,
                    pancake_pools.tsymbol,
                    pancake_pools.strong_active
             from pancake_pools
