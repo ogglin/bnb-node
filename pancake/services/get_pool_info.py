@@ -50,7 +50,7 @@ async def set_pools():
                pancake_pools.strong_active
         from pancake_pools
                  left join trusted_tokens_bsc ttb
-                           on (pancake_pools.token0_contract = ttb.contract or pancake_pools.token1_contract = ttb.contract)
+                           on (pancake_pools.token0_contract ilike ttb.contract or pancake_pools.token1_contract ilike ttb.contract)
         where ttb.is_active = true
            or ttb.strong_active = true;""")
     jpools = []
