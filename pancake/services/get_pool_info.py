@@ -38,19 +38,21 @@ async def check_liquid(pool, gap_bnb, gap=1000):
 
 async def set_pools():
     pools = await sync_query(f"""select pancake_pools.pool_contract,
-               pancake_pools.token0_contract,
-               pancake_pools.token0_symbol,
-               pancake_pools.token0_decimals,
-               pancake_pools.token1_contract,
-               pancake_pools.token1_symbol,
-               pancake_pools.token1_decimals,
-               pancake_pools.tsymbol,
-               pancake_pools.strong_active
-        from pancake_pools
-                 left join trusted_tokens_bsc ttb
-                           on (pancake_pools.token0_contract ilike ttb.contract or pancake_pools.token1_contract ilike ttb.contract)
-        where ttb.is_active = true
-           or ttb.strong_active = true;""")
+                   pancake_pools.token0_contract,
+                   pancake_pools.token0_symbol,
+                   pancake_pools.token0_decimals,
+                   pancake_pools.token0_name,
+                   pancake_pools.token1_contract,
+                   pancake_pools.token1_symbol,
+                   pancake_pools.token1_decimals,
+                   pancake_pools.token1_name,
+                   pancake_pools.tsymbol,
+                   pancake_pools.strong_active
+            from pancake_pools
+            inner join trusted_tokens_bsc ttb
+                   on (pancake_pools.token0_contract ilike ttb.contract 
+                   or pancake_pools.token1_contract ilike ttb.contract)
+                          and (ttb.is_active = true or ttb.strong_active = true);""")
     jpools = []
     for pool in pools:
         jpools.append(list(pool))
@@ -63,7 +65,7 @@ async def get_pools():
 
 
 async def get_pool_info(pool):
-    print(pool)
+    # print(pool)
     pool_contract, token0_contract, token0_symbol, token0_decimals, token1_contract, token1_symbol, token1_decimals, tsymbol, strong_active = pool
     address = Web3.toChecksumAddress(pool_contract)
     pool_factory = w3http.eth.contract(address=address, abi=ABIPoolPancake)
@@ -115,7 +117,7 @@ async def start():
     except Exception as err:
         await set_pools()
         pools = await get_pools()
-    print(len(pools))
+    print(len(pools), pools)
     all_pools = {}
     polls_stable = await get_ready_pools(stable_pools)
     gap_bnb = await get_gap_bnb()
